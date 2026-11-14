@@ -1,0 +1,11 @@
+@TDS_Parking_HostAddress = http://localhost:5114
+
+GET {{TDS_Parking_HostAddress}}/openapi/v1.json
+Accept: application/json
+
+###
+
+GET {{TDS_Parking_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="TDS_Parking.Tests/TDS_Parking.Tests.csproj" />
+  <Project Path="TDS_Parking/TDS_Parking.csproj" />
+</Solution>
