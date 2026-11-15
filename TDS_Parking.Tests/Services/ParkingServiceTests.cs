@@ -30,7 +30,7 @@ public class ParkingServiceTests
         var repository = new FakeParkingRepository { AvailableSlotId = 4 };
         var service = new ParkingService(repository, new FixedTimeProvider(now));
 
-        var result = service.EnterParking("ABC123", (int)VehicleType.MediumCar);
+        var result = service.EnterParking("ABC123", VehicleType.MediumCar);
 
         Assert.Equal("ABC123", result.VehicleReg);
         Assert.Equal(4, result.SpaceNumber);
