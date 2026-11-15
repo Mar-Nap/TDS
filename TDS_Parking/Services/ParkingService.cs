@@ -1,4 +1,5 @@
 ﻿using TDS_Parking.DTOs;
+using TDS_Parking.Enums;
 using TDS_Parking.Interfaces;
 using TDS_Parking.Models;
 
@@ -58,8 +59,8 @@ namespace TDS_Parking.Services
 
             var additionalCharge = repository.GetAdditionalCharge();
 
-            var parkingChargePerMinute = repository.GetParkingCharge(parkingEntry.VehicleType) * ((int)Math.Ceiling(timeSpan));
-            var parkingChargePerPeriods = (int)Math.Floor((double)timeSpan / additionalCharge.Period) * additionalCharge.Rate;
+            var parkingChargePerMinute = CalculatePerMinuteCharge(parkingEntry.VehicleType, timeSpan);
+            var parkingChargePerPeriods = CalculatePerPeriodCharge(parkingEntry.VehicleType, timeSpan, additionalCharge);
 
             parkingEntry.TimeOut = currentTime;
             parkingEntry.VehicleCharge = parkingChargePerMinute + parkingChargePerPeriods;
@@ -76,6 +77,12 @@ namespace TDS_Parking.Services
             };
 
         }
+
+        private decimal CalculatePerMinuteCharge(VehicleType vehicleType, double timeSpan) =>
+            repository.GetParkingCharge(vehicleType) * ((int)Math.Ceiling(timeSpan));
+
+        private decimal CalculatePerPeriodCharge(VehicleType vehicleType, double timeSpan, AdditionalCharge additionalCharge) =>
+            (decimal)Math.Floor((double)timeSpan / additionalCharge.Period) * additionalCharge.Rate;
     }
 
 
