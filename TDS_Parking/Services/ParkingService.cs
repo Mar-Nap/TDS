@@ -25,14 +25,14 @@ namespace TDS_Parking.Services
             };
         }
 
-        public ParkingEntryDTO EnterParking(string vehicleRegistrationNumber, int vehicleType)
+        public ParkingEntryDTO EnterParking(string vehicleRegistrationNumber, VehicleType vehicleType)
         {
             var availableSlot = repository.GetAvailableSlotId();
             var parkingEntry = new ParkingEntry()
             {
                 ParkingSlotId = availableSlot,
                 VehicleReg = vehicleRegistrationNumber,
-                VehicleType = (Enums.VehicleType)vehicleType,
+                VehicleType = vehicleType,
                 TimeIn = timeProvider.GetUtcNow()
             };
             repository.AddParkingEntry(parkingEntry);
