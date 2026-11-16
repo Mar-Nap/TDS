@@ -5,7 +5,7 @@ using TDS_Parking.Enums;
 
 namespace TDS_Parking.Validation
 {
-    public class VehicleTypeActionFilter : ActionFilterAttribute
+    public class VehicleTypeFilterAttribute : ActionFilterAttribute
     {
         public override void OnActionExecuting(ActionExecutingContext context)
         {

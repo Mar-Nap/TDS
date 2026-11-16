@@ -24,7 +24,7 @@ namespace TDS_Parking.Controllers
 
         [HttpPost]
         [VehicleRegFilter]
-        [VehicleTypeActionFilter]
+        [VehicleTypeFilterAttribute]
         public ActionResult<ParkingEntryDTO> enterParking([FromBody] VehicleDTO vehicle)
         {
             return Ok(parkingService.EnterParking(vehicle.VehicleReg, vehicle.VehicleType));
