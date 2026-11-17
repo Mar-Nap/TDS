@@ -1,0 +1,5 @@
+export enum VehicleType {
+  SmallCar = 1,
+  MediumCar = 2,
+  LargeCar = 3,
+}

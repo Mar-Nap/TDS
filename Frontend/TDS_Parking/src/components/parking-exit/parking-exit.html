@@ -1,0 +1,18 @@
+<form (submit)="submitForm($event)" class="form-body">
+  <div class="form-section">
+    <label for="vehicleReg">Vehicle Registration:</label>
+    <input id="vehicleReg" type="text" [formField]="vehicleExitForm.vehicleReg" />
+    @if (vehicleExitForm.vehicleReg().invalid() && vehicleExitForm.vehicleReg().touched()) {
+      <div class="error">
+        @for (error of vehicleExitForm.vehicleReg().errors(); track error.kind) {
+          <span>{{ error.message }}</span>
+        }
+      </div>
+    }
+  </div>
+  <div class="form-section">
+    <button class="big-button" type="submit" [disabled]="vehicleExitForm().invalid() || vehicleExitLoading()">
+      Enter
+    </button>
+  </div>
+</form>

@@ -1,0 +1,14 @@
+<div class="app-container">
+  @if (parkingStatusLoading()) {
+    <p>Loading parking status...</p>
+  } @else if (parkingStatusError()) {
+    <p>Error loading parking status.</p>
+  } @else if (parkingStatusSignal()) {
+    <app-parking-status
+      [parkedCars]="parkingStatusSignal().occupiedSpaces"
+      [emptySlots]="parkingStatusSignal().availableSpaces"
+    ></app-parking-status>
+  }
+
+  <router-outlet />
+</div>

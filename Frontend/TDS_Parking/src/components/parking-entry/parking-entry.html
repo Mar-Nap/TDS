@@ -1,0 +1,33 @@
+<form (submit)="submitForm($event)" class="form-body">
+  <div class="form-section">
+    <label for="vehicleReg">Vehicle Registration:</label>
+    <input id="vehicleReg" type="text" [formField]="vehicleEntryForm.vehicleReg" />
+    @if (vehicleEntryForm.vehicleReg().invalid() && vehicleEntryForm.vehicleReg().touched()) {
+      <div class="error">
+        @for (error of vehicleEntryForm.vehicleReg().errors(); track error.kind) {
+          <span>{{ error.message }}</span>
+        }
+      </div>
+    }
+  </div>
+  <div class="form-section">
+    <label for="vehicleType">Vehicle Type:</label>
+    <select id="vehicleType" [formField]="vehicleEntryForm.vehicleType">
+      <option value="SmallCar">Small Car</option>
+      <option value="MediumCar">Medium Car</option>
+      <option value="LargeCar">Large Car</option>
+    </select>
+    @if (vehicleEntryForm.vehicleType().invalid() && vehicleEntryForm.vehicleType().touched()) {
+      <div class="error">
+        @for (error of vehicleEntryForm.vehicleType().errors(); track error.kind) {
+          <span>{{ error.message }}</span>
+        }
+      </div>
+    }
+  </div>
+  <div class="form-section">
+    <button class="big-button" type="submit" [disabled]="vehicleEntryForm().invalid() || vehicleEntryLoading()">
+      Enter
+    </button>
+  </div>
+</form>
