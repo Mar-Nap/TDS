@@ -4,9 +4,10 @@ import { VehicleEntryForm } from '../../models';
 import { form, FormField, maxLength, minLength, required } from '@angular/forms/signals';
 import { Parking } from '../../services/parking';
 import { VehicleType } from '../../enums/vehicle-type.enum';
+import { RouterLink } from '@angular/router';
 
 @Component({
-  imports: [FormField],
+  imports: [FormField, RouterLink],
   selector: 'app-parking-entry',
   templateUrl: './parking-entry.html',
 })

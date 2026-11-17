@@ -1,11 +1,12 @@
 import { Component, inject, signal } from '@angular/core';
 import { form, FormField, maxLength, minLength, required } from '@angular/forms/signals';
+import { RouterLink } from '@angular/router';
 import { VehicleExitForm } from '../../models';
 import { Parking } from '../../services/parking';
 import { ToastService } from 'ngx-toaster-next';
 
 @Component({
-  imports: [FormField],
+  imports: [FormField, RouterLink],
   selector: 'app-parking-exit',
   templateUrl: './parking-exit.html',
 })
